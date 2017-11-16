@@ -1,0 +1,11 @@
+extends: eslint:recommended
+env:
+  node: true
+  commonjs: true
+  es6: true
+rules:
+  no-console: off
+  prefer-const: error
+  eqeqeq:
+    - error
+    - smart

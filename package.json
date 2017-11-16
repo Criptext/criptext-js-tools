@@ -1,0 +1,23 @@
+{
+  "name": "criptext-js-tools",
+  "version": "1.0.0",
+  "description": "JS tools used by Criptext",
+  "main": "index.js",
+  "author": "Gabriel Aumala",
+  "license": "MIT",
+  "dependencies": {
+    "babel-jest": "^21.2.0",
+    "eslint": "^4.11.0",
+    "glob": "^7.1.2",
+    "jest": "^21.2.1",
+    "merge-stream": "^1.0.1",
+    "prettier": "^1.8.2"
+  },
+  "scripts": {
+    "lint": "./src/index.js lint",
+    "test": "./src/index.js test"
+  },
+  "bin": {
+    "criptext-tools": "./src/index.js"
+  }
+}
