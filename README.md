@@ -12,8 +12,8 @@ Then add these lines to your `package.json`:
 
 ``` diff
   "scripts": {
-    +"lint": "criptext-js-tools lint",
-    +"test": "criptext-js-tools test"
++    "lint": "criptext-js-tools lint",
++    "test": "criptext-js-tools test"
   },
 ```
 
