@@ -1,10 +1,9 @@
 const jest = require('jest');
 
 const run = () => {
-  const config = ['--resetMocks'];
+  const config = process.argv.slice(2);
 
-  if (process.env.CI) config.push('--coverage');
-  //else config.push('--watch');
+  config.push('--resetMocks');
 
   jest.run(config);
 };

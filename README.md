@@ -10,7 +10,7 @@ yarn add --dev criptext-js-tools
 
 Then add these lines to your `package.json`:
 
-```diff
+``` diff
   "scripts": {
     +"lint": "criptext-js-tools lint",
     +"test": "criptext-js-tools test"
