@@ -7,7 +7,7 @@ function! s:replaceBufferWithLines(lines)
 endfunction
 
 function! Format()
-  let exe = "node_modules/.bin/criptext-js-tools/src/index.js format " . expand('%') 
+  let exe = "node_modules/.bin/criptext-js-tools format " . expand('%') 
   let formattedLines = systemlist(exe)
   if !empty(formattedLines)
     call s:replaceBufferWithLines(formattedLines)   
