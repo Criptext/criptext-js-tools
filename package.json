@@ -15,7 +15,8 @@
   },
   "scripts": {
     "lint": "./src/index.js lint",
-    "test": "./src/index.js test"
+    "test": "./src/index.js test",
+    "format": "./src/index.js format"
   },
   "bin": {
     "criptext-js-tools": "./src/index.js"

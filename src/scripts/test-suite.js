@@ -1,7 +1,7 @@
 const jest = require('../tools/jest.js');
 
-const exec = () => {
-  jest.run();
+const exec = args => {
+  jest.run(args);
 };
 
 module.exports = { exec };

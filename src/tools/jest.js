@@ -1,9 +1,8 @@
 const jest = require('jest');
 const defaultConfig = require('../config/jest.config.js');
 
-const run = () => {
-  const userConfig = process.argv.slice(3);
-  const config = defaultConfig.concat(userConfig);
+const run = args => {
+  const config = defaultConfig.concat(args);
 
   jest.run(config);
 };
