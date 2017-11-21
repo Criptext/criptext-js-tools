@@ -2,7 +2,7 @@ const CLIEngine = require('eslint').CLIEngine;
 
 const cli = new CLIEngine({
   useEslintrc: false,
-  configFile: require.resolve('./.eslintrc.yml')
+  configFile: require.resolve('../config/eslintrc.yml')
 });
 
 const lintCode = (sourceCode, fileName) =>
