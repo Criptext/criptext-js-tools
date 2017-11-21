@@ -5,7 +5,7 @@ const test = require('./scripts/test-suite.js');
 const format = require('./scripts/format.js');
 
 const action = process.argv[2];
-const args = process.argv.slice(3)
+const args = process.argv.slice(3);
 
 switch (action) {
   case 'lint':
