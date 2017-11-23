@@ -1,1 +1,10 @@
+.yarnignore
+.gitignore
 *.test.js
+*.swp
+*.js.swp
+*.js.snap
+coverage
+node_modules
+src/**/__mocks__
+src/**/__snapshots__
