@@ -6,6 +6,7 @@
   "author": "Gabriel Aumala",
   "license": "MIT",
   "dependencies": {
+    "babel-eslint": "^8.0.2",
     "babel-jest": "^21.2.0",
     "eslint": "^4.11.0",
     "glob": "^7.1.2",
