@@ -11,11 +11,14 @@ endfunction
 " the scripts STDOUT and the current buffer's text is replaced with the
 " formatted text
 function! Format()
+  let currentCursorPosition = winsaveview()
+
   let exe = "node_modules/.bin/criptext-js-tools format --filename " . expand('%') 
   let bufferLines = getline(1, line("$"))
   let formattedLines = systemlist(exe, bufferLines)
   if !empty(formattedLines)
     call s:replaceBufferWithLines(formattedLines)   
+    call winrestview(currentCursorPosition)
   endif
 endfunction
 
