@@ -1,6 +1,6 @@
 {
   "name": "criptext-js-tools",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "JS tools used by Criptext",
   "main": "index.js",
   "author": "Gabriel Aumala",

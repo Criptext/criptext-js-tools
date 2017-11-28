@@ -1,1 +1,1 @@
-module.exports = ['--resetMocks'];
+module.exports = [];
