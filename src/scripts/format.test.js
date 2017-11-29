@@ -32,6 +32,10 @@ jest.mock('fs', () => {
   };
 });
 
+beforeEach(() => {
+  io.writeToStdout.mockClear();
+});
+
 it('when the --filename arg is passed, reads from STDIN and writes formatted code to STDOUT', () => {
   const mockedArgs = ['--filename', 'foo.js'];
 

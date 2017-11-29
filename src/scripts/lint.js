@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const glob = require('glob');
 const analyze = require('../tools/code-analyzer.js');
 
@@ -10,20 +11,28 @@ const processFile = filepath => {
   if (prettierSourceCode != null)
     fs.writeFileSync(filepath, prettierSourceCode);
 
-  if (eslintReport) console.log(eslintReport);
+  return eslintReport;
 };
 
 const processGlobResults = (err, files) => {
   const length = files.length;
+  const reports = [];
   for (let i = 0; i < length; i++) {
-    const filepath = files[i];
-    processFile(filepath);
+    const filepath = 'src/' + files[i];
+    const newReport = processFile(filepath);
+    if (newReport) reports.push(newReport);
   }
+
+  reports.forEach(report => console.log(report));
+  if (reports.length > 0) process.exit(1);
 };
 
 const exec = () => {
-  glob('src/*.js', processGlobResults);
-  glob('src/**/*.js', processGlobResults);
+  glob(
+    '*.js',
+    { cwd: path.resolve(process.cwd(), 'src'), matchBase: true },
+    processGlobResults
+  );
 };
 
 module.exports = { exec, processFile };
