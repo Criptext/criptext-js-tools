@@ -2,6 +2,7 @@
 
 const lint = require('./scripts/lint.js');
 const test = require('./scripts/test-suite.js');
+const integration = require('./scripts/integration.js');
 const format = require('./scripts/format.js');
 
 const action = process.argv[2];
@@ -13,6 +14,9 @@ switch (action) {
     break;
   case 'test':
     test.exec(args);
+    break;
+  case 'integration':
+    integration.exec(args);
     break;
   case 'format':
     format.exec(args);
