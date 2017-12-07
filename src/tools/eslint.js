@@ -1,3 +1,4 @@
+/* eslint-env node, jest */
 const CLIEngine = require('eslint').CLIEngine;
 
 const cli = new CLIEngine({

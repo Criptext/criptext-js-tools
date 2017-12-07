@@ -7,4 +7,14 @@ const readFromStdin = () => {
   if (stdin) return stdin.toString();
 };
 
-module.exports = { writeToStdout, readFromStdin };
+const readFileSync = filepath => fs.readFileSync(filepath);
+
+const writeFileSync = (filepath, content) =>
+  fs.writeFileSync(filepath, content);
+
+module.exports = {
+  writeToStdout,
+  readFromStdin,
+  readFileSync,
+  writeFileSync
+};

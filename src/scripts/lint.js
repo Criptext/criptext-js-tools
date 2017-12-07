@@ -1,30 +1,30 @@
-const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
-const analyze = require('../tools/code-analyzer.js');
 
-const processFile = filepath => {
-  const data = fs.readFileSync(filepath);
-  const sourceCode = data.toString();
-  const { prettierSourceCode, eslintReport } = analyze(sourceCode, filepath);
+const { inspectRepository } = require('../tools/repo-inspector.js');
 
-  if (prettierSourceCode != null)
-    fs.writeFileSync(filepath, prettierSourceCode);
+const isCI = process.env.CI;
 
-  return eslintReport;
+const reportToConsole = (title, reports) => {
+  if (reports.length > 0) console.log(title);
+  reports.forEach(report => console.log(report));
+};
+
+const reportErrors = reports => {
+  const { formatterReports, linterReports } = reports;
+  reportToConsole('The following files need formatting:', formatterReports);
+  reportToConsole('Lint issues:', linterReports);
+
+  process.exit(1);
 };
 
 const processGlobResults = (err, files) => {
-  const length = files.length;
-  const reports = [];
-  for (let i = 0; i < length; i++) {
-    const filepath = 'src/' + files[i];
-    const newReport = processFile(filepath);
-    if (newReport) reports.push(newReport);
-  }
+  const reports = inspectRepository({
+    files,
+    isCI
+  });
 
-  reports.forEach(report => console.log(report));
-  if (reports.length > 0) process.exit(1);
+  if (reports) reportErrors(reports);
 };
 
 const exec = () => {
@@ -35,4 +35,4 @@ const exec = () => {
   );
 };
 
-module.exports = { exec, processFile };
+module.exports = { exec };
