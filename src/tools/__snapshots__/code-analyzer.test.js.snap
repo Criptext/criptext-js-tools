@@ -1,10 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`catches eslint rule violations and presents them in a readable string 1`] = `
-"Problems detected in: /home/gabriel/projects/criptext-js-tools/sample.js
-  - prefer-const (1, 5)"
-`;
-
 exports[`formats code correctly 1`] = `
 "const helloWorld = 'Hello World!';
 
