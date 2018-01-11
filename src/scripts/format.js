@@ -20,7 +20,7 @@ const exitWithError = errorMsg => {
 const readFile = filepath => {
   try {
     if (filepath) return fs.readFileSync(filepath).toString();
-    else exitWithError('A valid filepath must be provided');
+    exitWithError('A valid filepath must be provided');
   } catch (err) {
     exitWithError(`failed to read ${filepath}\n${err}`);
   }

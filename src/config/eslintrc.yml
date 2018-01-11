@@ -9,6 +9,8 @@ parserOptions:
 rules:
   no-console: off
   prefer-const: error
+  no-else-return: error
+  require-await: error
   eqeqeq:
     - error
     - smart

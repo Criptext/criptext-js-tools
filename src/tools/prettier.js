@@ -7,7 +7,7 @@ const getPrettierSourceCode = (sourceCode, filepath) => {
   const options = getOptionsForFile(filepath);
 
   if (prettier.check(sourceCode, options)) return null;
-  else return prettier.format(sourceCode, options);
+  return prettier.format(sourceCode, options);
 };
 
 module.exports = { getPrettierSourceCode };
