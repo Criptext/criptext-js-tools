@@ -1,5 +1,6 @@
 const prettier = require('../tools/prettier.js');
-const { Linter, ...eslint } = require('../tools/eslint.js');
+const eslint = require('../tools/eslint.js');
+const { Linter } = eslint;
 
 const createPrettierReport = filepath => `- ${filepath}`;
 

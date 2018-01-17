@@ -1,5 +1,5 @@
 /* eslint-env node, jest */
-const fs = require('fs')
+const fs = require('fs');
 
 const CodeAnalyzer = require('./code-analyzer.js');
 
@@ -23,8 +23,10 @@ describe('given a backend project', () => {
   });
 
   it('catches eslint rule violations and presents them in a readable string', () => {
-    const sourceCodePath = require.resolve('../../test-data/gulpfile.backend.js')
-    const code = fs.readFileSync(sourceCodePath).toString()
+    const sourceCodePath = require.resolve(
+      '../../test-data/gulpfile.backend.js'
+    );
+    const code = fs.readFileSync(sourceCodePath).toString();
 
     const { prettierSourceCode, eslintReport } = analyzer.analyze(
       code,
@@ -40,8 +42,8 @@ describe('given a frontend project', () => {
   const analyzer = new CodeAnalyzer(true);
 
   it('does not throw unused-var errors with JSX', () => {
-    const sourceCodePath = require.resolve('../../test-data/index.frontend.js')
-    const code = fs.readFileSync(sourceCodePath).toString()
+    const sourceCodePath = require.resolve('../../test-data/index.frontend.js');
+    const code = fs.readFileSync(sourceCodePath).toString();
 
     const { prettierSourceCode, eslintReport } = analyzer.analyze(
       code,
