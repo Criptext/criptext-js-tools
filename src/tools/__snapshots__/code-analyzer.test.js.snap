@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`formats code correctly 1`] = `
+exports[`given a backend project formats code correctly 1`] = `
 "const helloWorld = 'Hello World!';
 
 console.log(helloWorld);

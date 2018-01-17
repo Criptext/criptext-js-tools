@@ -1,0 +1,17 @@
+extends: 
+  - eslint:recommended
+  - plugin:react/recommended
+env:
+  browser: true
+  es6: true
+parser: babel-eslint
+parserOptions:
+  ecmaVersion: 6
+  sourceType: 'module'
+  jsx: true
+rules:
+  prefer-const: error
+  no-else-return: error
+  require-await: error
+  eqeqeq:
+    - error

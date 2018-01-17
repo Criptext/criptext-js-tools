@@ -1,21 +1,23 @@
 const io = require('../system/io.js');
 
-const analyze = require('../tools/code-analyzer.js');
+const CodeAnalyzer = require('../tools/code-analyzer.js');
 
-const inspectFile = filepath => {
+const inspectFile = (analyzer, filepath) => {
   const data = io.readFileSync(filepath);
   const sourceCode = data.toString();
-  return analyze(sourceCode, filepath);
+  return analyzer.analyze(sourceCode, filepath);
 };
 
 const inspectRepository = args => {
-  const { files, isCI } = args;
+  const { files, isCI, isFrontend } = args;
+  const analyzer = new CodeAnalyzer(isFrontend);
   const formatterReports = [];
   const linterReports = [];
 
   files.forEach(filename => {
     const filepath = 'src/' + filename;
     const { eslintReport, prettierReport, prettierSourceCode } = inspectFile(
+      analyzer,
       filepath
     );
 

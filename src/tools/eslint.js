@@ -1,13 +1,22 @@
 /* eslint-env node, jest */
 const CLIEngine = require('eslint').CLIEngine;
 
-const cli = new CLIEngine({
-  useEslintrc: false,
-  configFile: require.resolve('../config/eslintrc.yml')
-});
+const backendConfig = require.resolve('../config/eslintrc.yml');
+const frontendConfig = require.resolve('../config/eslintrc.frontend.yml');
 
-const lintCode = (sourceCode, fileName) =>
-  cli.executeOnText(sourceCode, fileName);
+const createCLIEngine = isFrontend =>
+  new CLIEngine({
+    useEslintrc: false,
+    configFile: require.resolve(isFrontend ? frontendConfig : backendConfig)
+  });
+
+class Linter {
+  constructor(isFrontend) {
+    const cli = createCLIEngine(isFrontend);
+    this.lintCode = (sourceCode, fileName) =>
+      cli.executeOnText(sourceCode, fileName);
+  }
+}
 
 const reduceEslintMessagesToSingleString = (filepath, messages) => {
   if (messages.length > 0) {
@@ -29,4 +38,4 @@ const stringifyEslintReport = report => {
   return reduceEslintMessagesToSingleString(result.filePath, messages);
 };
 
-module.exports = { lintCode, stringifyEslintReport };
+module.exports = { Linter, stringifyEslintReport };
