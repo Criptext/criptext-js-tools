@@ -23,6 +23,8 @@ Then add these lines to your `package.json`:
 
 This will format your js files with [prettier](https://github.com/prettier/prettier), and then check them with [eslint](https://github.com/eslint/eslint). Only files inside `src` will be processed. On a CI environment, no files are modified, instead, when unformatted files are found, an error detailing the filepaths is thrown. 
 
+The rules used depend on your project. If your project lists 'react-dom' as a dependency, it is considered a 'frontend' project and [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react)'s recommended rules are added.
+
 ### Format
 
 This script takes a file name as parameter and source code via STDIN, and it will format the source code with Prettier and print it to STDOUT. For example you can call it like this:
