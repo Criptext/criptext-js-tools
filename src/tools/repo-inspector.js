@@ -21,10 +21,14 @@ const inspectRepository = args => {
       filepath
     );
 
-    if (isCI && prettierSourceCode) formatterReports.push(prettierReport);
+    if (isCI && prettierSourceCode)
+      // eslint-disable-next-line fp/no-mutating-methods
+      formatterReports.push(prettierReport);
     else if (prettierSourceCode) io.writeFileSync(filepath, prettierSourceCode);
 
-    if (eslintReport) linterReports.push(eslintReport);
+    if (eslintReport)
+      // eslint-disable-next-line fp/no-mutating-methods
+      linterReports.push(eslintReport);
   });
 
   if (formatterReports.length === 0 && linterReports.length === 0)

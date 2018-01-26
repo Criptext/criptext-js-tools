@@ -4,6 +4,7 @@ const fs = require('fs');
 const format = require('./format.js');
 const io = require('../system/io.js');
 
+/* eslint-disable fp/no-let, fp/no-mutation */
 jest.mock('../system/io.js', () => {
   let _stdin = '';
   return {
@@ -31,6 +32,7 @@ jest.mock('fs', () => {
     }
   };
 });
+/* eslint-enable fp/no-let, fp/no-mutation */
 
 beforeEach(() => {
   io.writeToStdout.mockClear();

@@ -13,5 +13,9 @@ rules:
   prefer-const: error
   no-else-return: error
   require-await: error
+  fp/no-loops: error
+  fp/no-let: error
+  fp/no-mutation: error
+  fp/no-mutating-methods: error
   eqeqeq:
     - error
