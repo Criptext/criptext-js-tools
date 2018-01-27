@@ -18,23 +18,26 @@ const reportErrors = reports => {
   process.exit(1);
 };
 
-const createGlobCallback = ({ isFrontend }) => (err, files) => {
+const createGlobCallback = ({ isFrontend, skipLint }) => (err, files) => {
   const reports = inspectRepository({
     files,
     isCI,
-    isFrontend
+    isFrontend,
+    skipLint
   });
 
   if (reports) reportErrors(reports);
 };
 
 const exec = params => {
-  const processGlobResults = createGlobCallback(params);
-  glob(
-    '*.js',
-    { cwd: path.resolve(process.cwd(), 'src'), matchBase: true },
-    processGlobResults
-  );
+  const globOptions = {
+    cwd: path.resolve(process.cwd(), 'src'),
+    matchBase: true
+  };
+  const processJsFiles = createGlobCallback(params);
+  const processScssFiles = createGlobCallback({ ...params, skipLint: true });
+  glob('*.js', globOptions, processJsFiles);
+  glob('*.scss', globOptions, processScssFiles);
 };
 
 module.exports = { exec };

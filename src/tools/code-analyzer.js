@@ -5,7 +5,7 @@ const { Linter } = eslint;
 const createPrettierReport = filepath => `- ${filepath}`;
 
 class CodeAnalyzer {
-  constructor(isFrontend) {
+  constructor(isFrontend, skipLint) {
     const linter = new Linter(isFrontend);
     this.analyze = (sourceCode, filepath) => {
       const prettierSourceCode = prettier.getPrettierSourceCode(
@@ -13,10 +13,9 @@ class CodeAnalyzer {
         filepath
       );
 
-      const report = linter.lintCode(
-        prettierSourceCode || sourceCode,
-        filepath
-      );
+      const report =
+        !skipLint &&
+        linter.lintCode(prettierSourceCode || sourceCode, filepath);
 
       const eslintReport = eslint.stringifyEslintReport(report);
       const prettierReport = prettierSourceCode

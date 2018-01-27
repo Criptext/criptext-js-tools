@@ -9,8 +9,8 @@ const inspectFile = (analyzer, filepath) => {
 };
 
 const inspectRepository = args => {
-  const { files, isCI, isFrontend } = args;
-  const analyzer = new CodeAnalyzer(isFrontend);
+  const { files, isCI, isFrontend, skipLint } = args;
+  const analyzer = new CodeAnalyzer(isFrontend, skipLint);
   const formatterReports = [];
   const linterReports = [];
 

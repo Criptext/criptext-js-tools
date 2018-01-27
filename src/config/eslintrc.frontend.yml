@@ -9,13 +9,18 @@ parserOptions:
   ecmaVersion: 6
   sourceType: 'module'
   jsx: true
+plugins:
+  - fp
 rules:
   prefer-const: error
   no-else-return: error
   require-await: error
   fp/no-loops: error
   fp/no-let: error
-  fp/no-mutation: error
+  fp/no-mutation: 
+    - error
+    - commonjs: true
+      allowThis: true
   fp/no-mutating-methods: error
   eqeqeq:
     - error
