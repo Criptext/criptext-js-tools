@@ -25,6 +25,13 @@ This will format your js files with [prettier](https://github.com/prettier/prett
 
 The rules used depend on your project. If your project lists 'react-dom' as a dependency, it is considered a 'frontend' project and [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react)'s recommended rules are added.
 
+The rules included, are **very opinionated** and encourage a more functional style. We do acknowledge that sometimes this is not possible or optimal. In such cases you can disable rules for specific lines like this:
+
+``` javascript
+  // eslint-disable-next-line fp/no-mutation
+  values[key] = value;
+```
+
 ### Format
 
 This script takes a file name as parameter and source code via STDIN, and it will format the source code with Prettier and print it to STDOUT. For example you can call it like this:

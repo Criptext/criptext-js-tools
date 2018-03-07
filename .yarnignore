@@ -1,11 +1,14 @@
 .yarnignore
 .gitignore
+.circleci
 *.test.js
 *.swp
+*.vim
 *.js.swp
 *.js.snap
+*.tgz
 coverage
 node_modules
-test_data
+test-data
 src/**/__mocks__
 src/**/__snapshots__
