@@ -9,6 +9,9 @@ parserOptions:
 plugins:
   - fp
 rules:
+  no-unused-vars: 
+  - error
+  - ignoreRestSiblings: true
   no-console: off
   prefer-const: error
   no-else-return: error

@@ -12,6 +12,9 @@ parserOptions:
 plugins:
   - fp
 rules:
+  no-unused-vars: 
+  - error
+  - ignoreRestSiblings: true
   prefer-const: error
   no-else-return: error
   require-await: error
