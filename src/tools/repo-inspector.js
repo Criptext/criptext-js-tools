@@ -1,6 +1,6 @@
 const io = require('../system/io.js');
 
-const CodeAnalyzer = require('../tools/code-analyzer.js');
+const CodeAnalyzer = require('./code-analyzer.js');
 
 const inspectFile = (analyzer, filepath) => {
   const data = io.readFileSync(filepath);

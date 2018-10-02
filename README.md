@@ -32,16 +32,6 @@ The rules included, are **very opinionated** and encourage a more functional sty
   values[key] = value;
 ```
 
-### Format
-
-This script takes a file name as parameter and source code via STDIN, and it will format the source code with Prettier and print it to STDOUT. For example you can call it like this:
-
-```
-cat foo.js > criptext-js-tools foo.js
-```
-
-This is useful fo editor plugins that run external commands to format the current buffer. Please note that it is not necessary to pass the actual file name as parameter, as long as the extension is correct, Prettier will be able to figure out which parser it should use.
-
 ### Test
 
 This will look for unit test files and runs them in parallel with [Jest](https://facebook.github.io/jest/). The pattern used to match test files is Jest's default:

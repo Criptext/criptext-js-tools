@@ -3,7 +3,6 @@
 const lint = require('./scripts/lint.js');
 const test = require('./scripts/test-suite.js');
 const integration = require('./scripts/integration.js');
-const format = require('./scripts/format.js');
 const projectInfo = require('./tools/project-info.js');
 
 const action = process.argv[2];
@@ -21,9 +20,6 @@ switch (action) {
     break;
   case 'integration':
     integration.exec(args);
-    break;
-  case 'format':
-    format.exec(args);
     break;
   default:
     console.error(`Unknown script: ${action}`);

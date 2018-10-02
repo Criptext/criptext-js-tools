@@ -1,33 +1,44 @@
 /* eslint-env node, jest */
 const CLIEngine = require('eslint').CLIEngine;
 
-const backendConfig = require.resolve('../config/eslintrc.yml');
-const frontendConfig = require.resolve('../config/eslintrc.frontend.yml');
+const eslintConfig = require('../config/eslint.js');
 
-const createCLIEngine = isFrontend =>
-  new CLIEngine({
+const createLinterEngines = isFrontend => ({
+  base: new CLIEngine({
     useEslintrc: false,
-    configFile: require.resolve(isFrontend ? frontendConfig : backendConfig)
-  });
+    baseConfig: isFrontend ? eslintConfig.frontendBase : eslintConfig.nodeJSBase
+  }),
+  test: new CLIEngine({
+    useEslintrc: false,
+    baseConfig: isFrontend
+      ? eslintConfig.frontendTests
+      : eslintConfig.nodeJSTests
+  })
+});
 
 class Linter {
   constructor(isFrontend) {
-    const cli = createCLIEngine(isFrontend);
-    this.lintCode = (sourceCode, fileName) =>
-      cli.executeOnText(sourceCode, fileName);
+    const engines = createLinterEngines(isFrontend);
+    this.lintCode = (sourceCode, fileName) => {
+      if (fileName.endsWith('.test.js') || fileName.endsWith('.integration.js'))
+        return engines.test.executeOnText(sourceCode, fileName);
+      return engines.base.executeOnText(sourceCode, fileName);
+    };
   }
 }
 
 const reduceEslintMessagesToSingleString = (filepath, messages) => {
   if (messages.length > 0) {
     const msgStart = `Problems detected in: ${filepath}`;
-    return messages.reduce(
-      (accumulator, message) =>
-        accumulator.concat(
+    return messages.reduce((accumulator, message) => {
+      if (message.ruleId != null)
+        return accumulator.concat(
           `\n  - ${message.ruleId} (${message.line}, ${message.column})`
-        ),
-      msgStart
-    );
+        );
+      return accumulator.concat(
+        `\n - ${message.message} (${message.line}, ${message.column})`
+      );
+    }, msgStart);
   }
   return null;
 };
