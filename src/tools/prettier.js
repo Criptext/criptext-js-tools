@@ -10,10 +10,9 @@ const getPrettierSourceCode = (sourceCode, filepath) => {
     if (prettier.check(sourceCode, options)) return null;
     return prettier.format(sourceCode, options);
   } catch (err) {
+    // syntax errors have a codeFrame attribute, those will be handled by eslint
+    // and added to the linter reports, so lets ignore them here.
     if (!err.codeFrame) throw err;
-
-    console.error(`Found unexpected token while processing file ${filepath}:`);
-    console.error(err.codeFrame);
   }
 };
 
