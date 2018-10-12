@@ -45,8 +45,13 @@ const frontendBase = {
     ecmaVersion: 6,
     sourceType: 'module'
   },
-  plugins: ['fp'],
-  rules: ourUniversalRules
+  plugins: ['fp', 'react'],
+  rules: ourUniversalRules,
+  settings: {
+    react: {
+      version: '16.0'
+    }
+  }
 };
 
 const nodeJSTests = {
