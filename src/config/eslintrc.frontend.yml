@@ -15,3 +15,6 @@ rules:
   require-await: error
   eqeqeq:
     - error
+settings:
+  react:
+    version: '16.0'
