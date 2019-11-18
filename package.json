@@ -1,20 +1,20 @@
 {
-  "name": "criptext-js-tools",
-  "version": "0.5.0",
+  "name": "@criptext/criptext-js-tools",
+  "version": "0.5.1",
   "description": "JS tools used by Criptext",
   "main": "index.js",
   "author": "Gabriel Aumala",
   "license": "MIT",
   "dependencies": {
-    "babel-eslint": "^8.0.2",
-    "babel-jest": "^21.2.0",
-    "eslint": "^4.11.0",
-    "eslint-plugin-react": "^7.5.1",
-    "glob": "^7.1.2",
+    "babel-eslint": "8.2.6",
+    "babel-jest": "22.4.4",
+    "eslint": "4.19.1",
+    "eslint-plugin-react": "7.16.0",
+    "glob": "7.1.6",
     "jest": "22.1.2",
     "merge-stream": "^1.0.1",
-    "prettier": "^1.8.2",
-    "yargs": "^10.0.3"
+    "prettier": "1.12.1",
+    "yargs": "10.1.2"
   },
   "scripts": {
     "lint": "./src/index.js lint",
@@ -23,5 +23,9 @@
   },
   "bin": {
     "criptext-js-tools": "./src/index.js"
+  },
+  "jest": {
+    "verbose": true,
+    "testURL": "http://localhost/"
   }
 }
